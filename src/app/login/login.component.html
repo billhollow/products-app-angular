@@ -1,5 +1,33 @@
-<p>login works!!!!!!ddd</p>
-
-<H1>HORK</H1>
-<H1>HORK</H1>
-<H1>HORK</H1>
+<div class="login-container">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form (ngSubmit)="login()" #loginForm="ngForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" placeholder="Enter your username" required [(ngModel)]="username" name="username">
+            <mat-error >Please provide a valid username</mat-error> 
+            <!-- <mat-error *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+              Please enter a valid email address.
+            </mat-error> -->
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Enter your password" required [(ngModel)]="password" name="password">
+            <!-- <mat-error *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+              Password is required.
+            </mat-error> -->
+          </mat-form-field>
+        
+          <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" class="login-button">
+            <span>Login</span>
+          </button>
+          <!-- <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+          <button mat-raised-button color="primary" type="submit"> Hi button</button> -->
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>

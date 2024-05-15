@@ -7,6 +7,6 @@ import { UserComponent } from './user.component';
   imports: [
     CommonModule,
   ],
-
+  exports: [UserComponent],
 })
 export class UserModule { }

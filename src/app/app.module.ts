@@ -4,21 +4,27 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { LoginComponent } from './login/login.component';
-import { ProductComponent } from './product/product.component';
-import { UserComponent } from './user/user.component';
+
+
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { LoginModule } from './login/login.module';
+import { ProductModule } from './product/product.module';
+import { UserModule } from './user/user.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ProductComponent,
-    UserComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule,
+    SharedModule,
+    LoginModule,
+    ProductModule,
+    UserModule,
   ],
   providers: [
     provideClientHydration(),

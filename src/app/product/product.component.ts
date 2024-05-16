@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product',
@@ -30,17 +31,13 @@ export class ProductComponent implements OnInit {
   }
 
   loadProducts(): void {
-    // this.productService.getProducts().subscribe(products => {
-    //   this.products = products;
-    // });
-
     this.productService.getProducts().subscribe({
       next: (res: any) => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       },
-      error: console.log,
+      error: (err) => {},
     });
   }
 

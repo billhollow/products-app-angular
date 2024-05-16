@@ -4,11 +4,15 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class UnauthorizedInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    readonly authService: AuthService
+  ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
@@ -24,14 +28,14 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
   }
 
   handleUnauthorizedError() {
-    // Redirect user to the login page or display an error message
+
+    this.authService.handleLogoutSuccess();
     Swal.fire({
       icon: 'error',
       title: 'Acceso no autorizado',
       // text: error['error']['message'],
     });
     this.router.navigate(['/login']);
-    // Alternatively, you can display an error message to the user
-    // Example: this.notificationService.showError('Unauthorized access. Please login.');
+
   }
 }

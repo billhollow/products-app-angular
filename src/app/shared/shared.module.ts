@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card'; // Import MatCardModule
 import { MatFormFieldModule } from '@angular/material/form-field'; // Import MatFormFieldModule
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -24,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
+    MatPaginatorModule
   ]
 })
 export class SharedModule { }

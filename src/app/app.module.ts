@@ -11,6 +11,8 @@ import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
 import { ProductModule } from './product/product.module';
 import { UserModule } from './user/user.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './core/auth/services/interceptor.service';
 
 
 @NgModule({
@@ -18,6 +20,7 @@ import { UserModule } from './user/user.module';
     AppComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     CoreModule,
@@ -28,7 +31,12 @@ import { UserModule } from './user/user.module';
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

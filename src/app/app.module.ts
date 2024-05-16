@@ -13,6 +13,7 @@ import { ProductModule } from './product/product.module';
 import { UserModule } from './user/user.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth/services/interceptor.service';
+import { UnauthorizedInterceptor } from './core/auth/services/unauthorized-interceptor.service';
 
 
 @NgModule({
@@ -36,6 +37,11 @@ import { AuthInterceptor } from './core/auth/services/interceptor.service';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: UnauthorizedInterceptor, 
+      multi: true 
     }
   ],
   bootstrap: [AppComponent]

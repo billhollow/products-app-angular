@@ -4,14 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TokenService {
-  private readonly TOKEN_KEY = 'token';
+  private readonly TOKEN_KEY = 'products-app-token';
 
   setToken(token: string): void {
     localStorage.setItem(this.TOKEN_KEY, token);
   }
 
   getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);
+    if (typeof localStorage !== 'undefined')
+      return localStorage.getItem(this.TOKEN_KEY);
+    return null;
   }
 
   clearToken(): void {

@@ -1,8 +1,9 @@
-import { Component, Inject, Input, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { EventEmitter } from 'stream';
+import { Component } from '@angular/core';
 import { LoginService } from './services/login.service';
+import { TokenService } from '../core/auth/services/token.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { AuthService } from '../core/auth/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,23 +14,30 @@ export class LoginComponent {
   username: string;
   password: string;
 
-  constructor(private loginService: LoginService) {
+  constructor(
+    private readonly loginService: LoginService, 
+    private readonly tokenService: TokenService,
+    private router: Router,
+    private readonly authService: AuthService
+  ) {
     this.username = "";
     this.password = "";
   }
 
   login() {
-    // Implement login logic here
-    console.log('Username:', this.username);
-    console.log('Password:', this.password);
     this.loginService.login(this.username, this.password).subscribe({
       next: (res) => {
-        console.log('Login successful:', res);
+        this.authService.handleLoginSuccess();
+        this.tokenService.setToken(res['token']);
+        this.router.navigate(['/product']);
       },
       error: (error) => {
-        console.error('Login error:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Invalid Username or Password',
+          // text: error['error']['message'],
+        });
       }
     });
-
   }
 }

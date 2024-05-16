@@ -1,8 +1,19 @@
-<p>product works!</p>
+<!-- <mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Search..." #input>
+</mat-form-field> -->
 
-<!-- product-list.component.html -->
+<div>
+  <h1>hello dudeeeeeeeeeeeeeeeeeeeeeeeeeee</h1>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+  </mat-form-field>
+</div>
+
+
 <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="products" class="mat-table">
+    <table mat-table [dataSource]="dataSource" class="mat-table">
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>ID</th>

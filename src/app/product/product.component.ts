@@ -5,7 +5,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
-import Swal from 'sweetalert2';
 import { ProductAddEditComponent } from './product-add-edit/product-add-edit.component';
 import { ConfirmationAlertComponent } from '../core/confirmation-alert/confirmation-alert.component';
 import { SnackbarService } from '../core/confirmation-alert/services/snackbar.service';
@@ -69,14 +68,14 @@ export class ProductComponent implements OnInit {
   deleteProduct(id: number) {
     
     this.matDialog.open(ConfirmationAlertComponent, {
-      data: `Are you sure you want to delete that employee application?`,
+      data: `Are you sure you want to delete that product application?`,
     })
     .afterClosed()
     .subscribe((confirmed: Boolean) => {
       if (confirmed) {
         this.productService.deleteProduct(id).subscribe({
           next: (res) => {
-            this.snackBarService.openSnackBar('Employee deleted!', 'done');
+            this.snackBarService.openSnackBar('Product deleted!', 'done');
             this.loadProducts();
           },
           error: console.log,
@@ -98,6 +97,19 @@ export class ProductComponent implements OnInit {
           this.loadProducts();
         }
       },
+    });
+  }
+
+  openAddEditProductForm() {
+    const dialogRef = this.matDialog.open(ProductAddEditComponent, {
+      width: '1000px',
+    });
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.loadProducts();
+        }
+      }
     });
   }
 }

@@ -1,46 +1,46 @@
 .row {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
 
-    mat-form-field {
-        width: 100%;
-        mat-label{
-            font-size: 16px;
-        }
+  mat-form-field {
+    width: 100%;
+    mat-label {
+      font-size: 16px;
     }
+  }
 }
 
 .bottom-form {
-    padding: 0px 25px 20px;
-    button {
-        flex: 1;
-    }
+  padding: 0px 25px 20px;
+  button {
+    flex: 1;
+  }
 }
 
 /* Custom styles for Angular Material buttons */
 .custom-button {
-    background-color: #2196f3; /* Blue color */
-    color: #fff; /* White text */
-    padding: 8px 16px; /* Padding */
-    border-radius: 4px; /* Rounded corners */
-    font-size: 16px; /* Font size */
-    margin-right: 16px; /* Margin between buttons */
-  }
-  
-  /* Container for buttons */
-  .button-container {
-    display: flex;
-    justify-content: flex-end; /* Align buttons to the right */
-  }
-  
-  /* Margin between buttons */
-  .custom-button + .custom-button {
-    margin-left: 12px;
-  }
-  
-  /* Hover effect */
-  .custom-button:hover {
-    background-color: #0d47a1; /* Darker blue on hover */
-    transition: background-color 0.3s ease; /* Smooth transition */
-  }
+  background-color: #2196f3; /* Blue color */
+  color: #fff; /* White text */
+  padding: 8px 16px; /* Padding */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  margin-right: 16px; /* Margin between buttons */
+}
+
+/* Container for buttons */
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+}
+
+/* Margin between buttons */
+.custom-button + .custom-button {
+  margin-left: 12px;
+}
+
+/* Hover effect */
+.custom-button:hover {
+  background-color: #0d47a1; /* Darker blue on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}

@@ -1,0 +1,15 @@
+.main-table-body {
+    display: flex;
+    padding-top: 20px;
+    margin: 0 auto 10px;
+    max-width: 12481px;
+    mat-form-field {
+      // width: 80%;
+      flex-grow: 1;
+    }
+    button {
+      flex-shrink: 0; /* Prevent the smaller item from shrinking */
+      margin-left: 12px; /* Margin for the left side */
+      margin-bottom: 5px; /* Margin for the bottom side */
+    }
+  }

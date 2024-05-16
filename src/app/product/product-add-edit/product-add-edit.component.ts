@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from '../../core/confirmation-alert/services/snackbar.service';
 import { ProductService } from '../services/product.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -69,8 +70,14 @@ export class ProductAddEditComponent implements OnInit{
             this.snackbarService.openSnackBar("Product updated successfully");
             this._matDialogRef.close(true);
           },
-          error: (err: any) => {
-            console.error(">>>ERROR: "+err);
+          error: (error: any) => {
+            const errorsFormated: string[] = error['error']['message'].map((msg: string) => `<li>${msg}</li>`).join('\n');
+            Swal.fire({
+              icon: 'error',
+              title: 'Acceso no autorizado',
+              html: `<div style="text-align:left;"> <ul>${errorsFormated}</ul>`
+            });
+            // console.error(">>>ERROR: "+err);
           }
         })
       } else {
@@ -79,8 +86,13 @@ export class ProductAddEditComponent implements OnInit{
             this.snackbarService.openSnackBar("Product added successfully");
             this._matDialogRef.close(true);
           },
-          error: (err: any) => {
-            console.error(">>>ERROR: "+err)
+          error: (error: any) => {
+            const errorsFormated: string[] = error['error']['message'].map((msg: string) => `<li>${msg}</li>`).join('\n');
+            Swal.fire({
+              icon: 'error',
+              title: 'Acceso no autorizado',
+              html: `<div style="text-align:left;"> <ul>${errorsFormated}</ul>`
+            });
           }
         })
       }

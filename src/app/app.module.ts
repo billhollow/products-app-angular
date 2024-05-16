@@ -14,6 +14,7 @@ import { UserModule } from './user/user.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth/services/interceptor.service';
 import { UnauthorizedInterceptor } from './core/auth/services/unauthorized-interceptor.service';
+import { RegisterUserModule } from './register-user/register-user.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { UnauthorizedInterceptor } from './core/auth/services/unauthorized-inter
     LoginModule,
     ProductModule,
     UserModule,
+    RegisterUserModule
   ],
   providers: [
     provideClientHydration(),

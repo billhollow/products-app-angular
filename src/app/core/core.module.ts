@@ -4,12 +4,14 @@ import { HeaderComponent } from './header/header.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
+import { ConfirmationAlertComponent } from './confirmation-alert/confirmation-alert.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    AuthComponent
+    AuthComponent,
+    ConfirmationAlertComponent
   ],
   imports: [
     CommonModule,

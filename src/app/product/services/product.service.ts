@@ -18,7 +18,7 @@ export class ProductService {
   }
 
   getProduct(id: number): Observable<Product> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrl}${id}`;
     return this.http.get<Product>(url);
   }
 
@@ -27,12 +27,12 @@ export class ProductService {
   }
 
   patchProduct(id: number, product: Product): Observable<Product> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrl}${id}`;
     return this.http.patch<Product>(url, product);
   }
 
   deleteProduct(id: number): Observable<void> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrl}${id}`;
     return this.http.delete<void>(url);
   }
 }
